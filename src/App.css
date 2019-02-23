@@ -1,0 +1,58 @@
+#title {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.length-container {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.buttons {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+#break-decrement,
+#break-increment,
+#session-increment,
+#session-decrement {
+  font-size: 14px;
+}
+
+#timer > div {
+  display: flex;
+  justify-content: center;
+}
+
+#time-left > h1 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 200px;
+  height: 100px;
+  padding: 60px;
+  border: solid;
+  border-radius: 60px;
+  font-size: 50px;
+}
+
+.start-stop-reset {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+}
+
+#start-stop {
+  margin-right: 20px;
+  font-size: 14px;
+  padding: 6px;
+}
+
+#reset {
+  margin-left: 20px;
+  font-size: 14px;
+  padding: 6px;
+}
