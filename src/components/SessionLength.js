@@ -6,9 +6,13 @@ class SessionLength extends Component {
       <div className="session-container">
         <h2 id="session-label">Session Length</h2>
         <div className="buttons">
-          <button id="session-decrement">-</button>
+          <button id="session-decrement" onClick={this.props.sessionDecrement}>
+            -
+          </button>
           <h2 id="session-length">{this.props.sessionLength}</h2>
-          <button id="session-increment">+</button>
+          <button id="session-increment" onClick={this.props.sessionIncrement}>
+            +
+          </button>
         </div>
       </div>
     );

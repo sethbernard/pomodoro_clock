@@ -22,16 +22,28 @@ class App extends Component {
   };
 
   handleBreakIncrement = () => {
-    if (this.state.breakTime <= 98) {
+    if (this.state.breakTime < 60) {
       this.setState(prevState => ({
         breakTime: prevState.breakTime + 1
       }));
     }
   };
 
-  handleSession = () => {};
+  handleSessionDecrement = () => {
+    if (this.state.sessionLength >= 2) {
+      this.setState(prevState => ({
+        sessionLength: prevState.sessionLength - 1
+      }));
+    }
+  };
 
-  handleTimer = () => {};
+  handleSessionIncrement = () => {
+    if (this.state.sessionLength < 60) {
+      this.setState(prevState => ({
+        sessionLength: prevState.sessionLength + 1
+      }));
+    }
+  };
 
   handleReset = () => {
     this.setState({
@@ -52,7 +64,11 @@ class App extends Component {
             breakDecrement={this.handleBreakDecrement}
             breakIncrement={this.handleBreakIncrement}
           />
-          <SessionLength sessionLength={this.state.sessionLength} />
+          <SessionLength
+            sessionLength={this.state.sessionLength}
+            sessionDecrement={this.handleSessionDecrement}
+            sessionIncrement={this.handleSessionIncrement}
+          />
         </div>
         <Timer timeLeft={this.state.timeLeft} reset={this.handleReset} />
       </div>
