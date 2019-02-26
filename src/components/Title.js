@@ -1,9 +1,9 @@
 import React from "react";
 
-export default function Title() {
-  return (
-    <div id="title">
-      <h1>Pomodoro Clock</h1>
-    </div>
-  );
-}
+const Title = () => (
+  <div id="title">
+    <h1>Pomodoro Clock</h1>
+  </div>
+);
+
+export default Title;

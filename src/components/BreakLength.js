@@ -8,7 +8,7 @@ class BreakLength extends Component {
           <h2 id="break-label">Break Length</h2>
           <div className="buttons">
             <button id="break-decrement">-</button>
-            <h2 id="break-length">5</h2>
+            <h2 id="break-length">{this.props.breakTime}</h2>
             <button id="break-increment">+</button>
           </div>
         </div>
