@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 
-export default class Timer extends Component {
+class Timer extends Component {
   render() {
     return (
       <div>
@@ -20,3 +20,5 @@ export default class Timer extends Component {
     );
   }
 }
+
+export default Timer;

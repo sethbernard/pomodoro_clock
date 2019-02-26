@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 
-export class SessionLength extends Component {
+class SessionLength extends Component {
   render() {
     return (
       <div className="session-container">

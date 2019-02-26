@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 
-export default class BreakLength extends Component {
+class BreakLength extends Component {
   render() {
     return (
       <div className="length-container">
@@ -16,3 +16,5 @@ export default class BreakLength extends Component {
     );
   }
 }
+
+export default BreakLength;
