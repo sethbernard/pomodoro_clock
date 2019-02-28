@@ -7,24 +7,24 @@ import Timer from "./components/Timer";
 
 class App extends Component {
   state = {
-    breakTime: 5,
+    breakLength: 5,
     sessionLength: 25,
     timeLeft: 25,
     timerIsActive: false
   };
 
   handleBreakDecrement = () => {
-    if (this.state.breakTime >= 2) {
+    if (this.state.breakLength >= 2) {
       this.setState(prevState => ({
-        breakTime: prevState.breakTime - 1
+        breakLength: prevState.breakLength - 1
       }));
     }
   };
 
   handleBreakIncrement = () => {
-    if (this.state.breakTime < 60) {
+    if (this.state.breakLength < 60) {
       this.setState(prevState => ({
-        breakTime: prevState.breakTime + 1
+        breakLength: prevState.breakLength + 1
       }));
     }
   };
@@ -47,7 +47,7 @@ class App extends Component {
 
   handleReset = () => {
     this.setState({
-      breakTime: 5,
+      breakLength: 5,
       sessionLength: 25,
       timeLeft: 25,
       timerIsActive: false
@@ -60,7 +60,7 @@ class App extends Component {
         <Title />
         <div className="length-container">
           <BreakLength
-            breakTime={this.state.breakTime}
+            breakLength={this.state.breakLength}
             breakDecrement={this.handleBreakDecrement}
             breakIncrement={this.handleBreakIncrement}
           />

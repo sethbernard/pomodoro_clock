@@ -10,7 +10,7 @@ class BreakLength extends Component {
             <button id="break-decrement" onClick={this.props.breakDecrement}>
               -
             </button>
-            <h2 id="break-length">{this.props.breakTime}</h2>
+            <h2 id="break-length">{this.props.breakLength}</h2>
             <button id="break-increment" onClick={this.props.breakIncrement}>
               +
             </button>
