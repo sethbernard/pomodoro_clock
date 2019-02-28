@@ -6,13 +6,18 @@ import SessionLength from "./components/SessionLength";
 import Timer from "./components/Timer";
 
 class App extends Component {
-  state = {
-    breakLength: 5,
-    sessionLength: 25,
-    minutesLeft: "25",
-    secondsLeft: "00",
-    timerIsActive: false
-  };
+  constructor() {
+    super();
+
+    this.state = {
+      breakLength: 5,
+      sessionLength: 25,
+      minutes: "25",
+      seconds: "00",
+      timerIsRunning: false,
+      isSession: true
+    };
+  }
 
   handleBreakDecrement = () => {
     if (this.state.breakLength >= 2) {
@@ -33,7 +38,8 @@ class App extends Component {
   handleSessionDecrement = () => {
     if (this.state.sessionLength >= 2) {
       this.setState(prevState => ({
-        sessionLength: prevState.sessionLength - 1
+        sessionLength: prevState.sessionLength - 1,
+        minutes: prevState.sessionLength - 1
       }));
     }
   };
@@ -41,7 +47,8 @@ class App extends Component {
   handleSessionIncrement = () => {
     if (this.state.sessionLength < 60) {
       this.setState(prevState => ({
-        sessionLength: prevState.sessionLength + 1
+        sessionLength: prevState.sessionLength + 1,
+        minutes: prevState.sessionLength + 1
       }));
     }
   };
@@ -50,10 +57,15 @@ class App extends Component {
     this.setState({
       breakLength: 5,
       sessionLength: 25,
-      minutesLeft: "25",
-      secondsLeft: "00",
-      timerIsActive: false
+      minutes: "25",
+      seconds: "00",
+      timerIsRunning: false,
+      isSession: true
     });
+  };
+
+  onStart = () => {
+    this.setState({ timerIsRunning: true });
   };
 
   render() {
@@ -73,8 +85,9 @@ class App extends Component {
           />
         </div>
         <Timer
-          timeLeft={`${this.state.minutesLeft} : ${this.state.secondsLeft}`}
+          timeLeft={`${this.state.minutes} : ${this.state.seconds}`}
           reset={this.handleReset}
+          start={this.onStart}
         />
       </div>
     );

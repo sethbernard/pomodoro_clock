@@ -13,7 +13,9 @@ class Timer extends Component {
           </div>
         </div>
         <div className="start-stop-reset">
-          <button id="start_stop">Start</button>
+          <button id="start_stop" onClick={this.props.start}>
+            Start
+          </button>
           <button id="reset" onClick={this.props.reset}>
             Reset
           </button>
