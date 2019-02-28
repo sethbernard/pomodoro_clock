@@ -57,8 +57,8 @@ class App extends Component {
     this.setState({
       breakLength: 5,
       sessionLength: 25,
-      minutes: 25,
-      seconds: 0,
+      minutes: "25",
+      seconds: "00",
       timerIsRunning: false,
       isSession: true
     });
@@ -78,13 +78,18 @@ class App extends Component {
     }
 
     if (this.state.minutes === 0 && this.state.seconds == 0) {
-      clearInterval(this.interval);
+      this.pauseTimer();
     }
   };
 
   countDown = () => {
     this.setState({ timerIsRunning: true });
     this.interval = setInterval(this.onStart, 1000);
+  };
+
+  pauseTimer = () => {
+    this.setState({ timerIsRunning: false });
+    clearInterval(this.interval);
   };
 
   render() {
@@ -105,8 +110,10 @@ class App extends Component {
         </div>
         <Timer
           timeLeft={`${this.state.minutes} : ${this.state.seconds}`}
+          isRunning={this.state.timerIsRunning}
           reset={this.handleReset}
           start={this.countDown}
+          pause={this.pauseTimer}
         />
       </div>
     );
