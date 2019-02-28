@@ -12,8 +12,8 @@ class App extends Component {
     this.state = {
       breakLength: 5,
       sessionLength: 25,
-      minutes: 25,
-      seconds: 0,
+      minutes: "25",
+      seconds: "00",
       timerIsRunning: false,
       isSession: true
     };
@@ -65,20 +65,25 @@ class App extends Component {
   };
 
   onStart = () => {
-    this.setState({ timerIsRunning: true });
-
-    if (this.state.seconds === 0) {
+    if (this.state.seconds == 0) {
       this.setState({ minutes: this.state.minutes - 1, seconds: 60 });
     }
 
-    if (this.state.seconds < 60) {
+    if (this.state.seconds <= 60) {
       this.setState({ seconds: this.state.seconds - 1 });
     }
-    if (this.state.minutes === 0 && this.state.seconds === 0)
+
+    if (this.state.seconds < 10 || this.state.seconds == 0) {
+      this.setState({ seconds: "0" + this.state.seconds });
+    }
+
+    if (this.state.minutes === 0 && this.state.seconds == 0) {
       clearInterval(this.interval);
+    }
   };
 
   countDown = () => {
+    this.setState({ timerIsRunning: true });
     this.interval = setInterval(this.onStart, 1000);
   };
 
