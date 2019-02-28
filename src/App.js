@@ -9,7 +9,8 @@ class App extends Component {
   state = {
     breakLength: 5,
     sessionLength: 25,
-    timeLeft: 25,
+    minutesLeft: "25",
+    secondsLeft: "00",
     timerIsActive: false
   };
 
@@ -49,7 +50,8 @@ class App extends Component {
     this.setState({
       breakLength: 5,
       sessionLength: 25,
-      timeLeft: 25,
+      minutesLeft: "25",
+      secondsLeft: "00",
       timerIsActive: false
     });
   };
@@ -70,7 +72,10 @@ class App extends Component {
             sessionIncrement={this.handleSessionIncrement}
           />
         </div>
-        <Timer timeLeft={this.state.timeLeft} reset={this.handleReset} />
+        <Timer
+          timeLeft={`${this.state.minutesLeft} : ${this.state.secondsLeft}`}
+          reset={this.handleReset}
+        />
       </div>
     );
   }
