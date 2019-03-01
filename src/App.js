@@ -77,8 +77,19 @@ class App extends Component {
       this.setState({ seconds: "0" + this.state.seconds });
     }
 
-    if (this.state.minutes === 0 && this.state.seconds == 0) {
-      this.pauseTimer();
+    if (
+      this.state.minutes === 0 &&
+      this.state.seconds == 0 &&
+      this.state.isSession
+    ) {
+      this.handleBreak();
+    }
+    if (
+      this.state.minutes === 0 &&
+      this.state.seconds == 0 &&
+      !this.state.isSession
+    ) {
+      this.handleReset();
     }
   };
 
@@ -90,6 +101,10 @@ class App extends Component {
   pauseTimer = () => {
     this.setState({ timerIsRunning: false });
     clearInterval(this.interval);
+  };
+
+  handleBreak = () => {
+    this.setState({ minutes: this.state.breakLength, isSession: false });
   };
 
   render() {
