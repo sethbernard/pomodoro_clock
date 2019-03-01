@@ -6,7 +6,7 @@ class Timer extends Component {
       <div>
         <div id="timer">
           <div id="timer-label">
-            <h2>Session</h2>
+            <h2>{this.props.session ? "Session" : "Break"}</h2>
           </div>
           <div id="time-left">
             <h1>{this.props.timeLeft}</h1>

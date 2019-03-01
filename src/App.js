@@ -54,6 +54,8 @@ class App extends Component {
   };
 
   handleReset = () => {
+    clearInterval(this.interval);
+
     this.setState({
       breakLength: 5,
       sessionLength: 25,
@@ -78,14 +80,14 @@ class App extends Component {
     }
 
     if (
-      this.state.minutes === 0 &&
+      this.state.minutes == 0 &&
       this.state.seconds == 0 &&
       this.state.isSession
     ) {
       this.handleBreak();
     }
     if (
-      this.state.minutes === 0 &&
+      this.state.minutes == 0 &&
       this.state.seconds == 0 &&
       !this.state.isSession
     ) {
@@ -129,6 +131,7 @@ class App extends Component {
           reset={this.handleReset}
           start={this.countDown}
           pause={this.pauseTimer}
+          session={this.state.isSession}
         />
       </div>
     );
