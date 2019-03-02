@@ -6,19 +6,15 @@ import SessionLength from "./components/SessionLength";
 import Timer from "./components/Timer";
 
 class App extends Component {
-  constructor() {
-    super();
-
-    this.state = {
-      breakLength: 5,
-      sessionLength: 25,
-      minutes: "25",
-      seconds: "00",
-      timerIsRunning: false,
-      isSession: true,
-      sound: "https://actions.google.com/sounds/v1/alarms/alarm_clock.ogg"
-    };
-  }
+  state = {
+    breakLength: 5,
+    sessionLength: 25,
+    minutes: "25",
+    seconds: "00",
+    timerIsRunning: false,
+    isSession: true,
+    sound: "https://actions.google.com/sounds/v1/alarms/alarm_clock.ogg"
+  };
 
   handleBreakDecrement = () => {
     if (this.state.breakLength >= 2) {
