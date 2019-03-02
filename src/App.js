@@ -15,7 +15,8 @@ class App extends Component {
       minutes: "25",
       seconds: "00",
       timerIsRunning: false,
-      isSession: true
+      isSession: true,
+      sound: "https://actions.google.com/sounds/v1/alarms/alarm_clock.ogg"
     };
   }
 
@@ -62,7 +63,8 @@ class App extends Component {
       minutes: "25",
       seconds: "00",
       timerIsRunning: false,
-      isSession: true
+      isSession: true,
+      sound: "https://actions.google.com/sounds/v1/alarms/alarm_clock.ogg"
     });
   };
 
@@ -79,11 +81,16 @@ class App extends Component {
       this.setState({ seconds: "0" + this.state.seconds });
     }
 
+    if (this.state.minutes < 10 && this.state.seconds == 59) {
+      this.setState({ minutes: "0" + this.state.minutes });
+    }
+
     if (
       this.state.minutes == 0 &&
       this.state.seconds == 0 &&
       this.state.isSession
     ) {
+      this.audio.play();
       this.handleBreak();
     }
     if (
@@ -91,6 +98,7 @@ class App extends Component {
       this.state.seconds == 0 &&
       !this.state.isSession
     ) {
+      this.audio.play();
       this.handleReset();
     }
   };
@@ -106,7 +114,10 @@ class App extends Component {
   };
 
   handleBreak = () => {
-    this.setState({ minutes: this.state.breakLength, isSession: false });
+    this.setState({
+      minutes: "0" + this.state.breakLength,
+      isSession: false
+    });
   };
 
   render() {
@@ -132,6 +143,12 @@ class App extends Component {
           start={this.countDown}
           pause={this.pauseTimer}
           session={this.state.isSession}
+          sound={this.state.sound}
+        />
+        <audio
+          id="beep"
+          ref={audio => (this.audio = audio)}
+          src={this.state.sound}
         />
       </div>
     );
