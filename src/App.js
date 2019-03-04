@@ -9,7 +9,7 @@ class App extends Component {
   state = {
     breakLength: 5,
     sessionLength: 25,
-    minutes: "25",
+    minutes: 25,
     seconds: "00",
     timerIsRunning: false,
     isSession: true,
@@ -56,7 +56,7 @@ class App extends Component {
     this.setState({
       breakLength: 5,
       sessionLength: 25,
-      minutes: "25",
+      minutes: 25,
       seconds: "00",
       timerIsRunning: false,
       isSession: true,
@@ -96,6 +96,7 @@ class App extends Component {
     ) {
       this.audio.play();
       this.handleReset();
+      this.countDown();
     }
   };
 
@@ -111,7 +112,8 @@ class App extends Component {
 
   handleBreak = () => {
     this.setState({
-      minutes: "0" + this.state.breakLength - 1,
+      minutes: this.state.breakLength,
+      seconds: "00",
       isSession: false
     });
   };
