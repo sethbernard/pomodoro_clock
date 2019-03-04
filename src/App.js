@@ -87,7 +87,7 @@ class App extends Component {
       this.state.isSession
     ) {
       this.audio.play();
-      this.handleBreak();
+      setTimeout(this.handleBreak, 1000);
     }
     if (
       this.state.minutes == 0 &&
@@ -111,7 +111,7 @@ class App extends Component {
 
   handleBreak = () => {
     this.setState({
-      minutes: "0" + this.state.breakLength,
+      minutes: "0" + this.state.breakLength - 1,
       isSession: false
     });
   };
